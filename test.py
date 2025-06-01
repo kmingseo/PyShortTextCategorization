@@ -1,5 +1,3 @@
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-
 from gensim.models import KeyedVectors
 from shorttext.classifiers import SumEmbeddedVecClassifier
 
