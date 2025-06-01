@@ -2,7 +2,7 @@ from gensim.models import KeyedVectors
 from shorttext.classifiers import SumEmbeddedVecClassifier
 
 # load the word embedding model
-model = KeyedVectors.load_word2vec_format('glove.6B.100d.word2vec.txt', binary=False)
+model = KeyedVectors.load_word2vec_format('glove.6B.100d.25k.word2vec.txt', binary=False)
 
 classifier = SumEmbeddedVecClassifier(model)
 
