@@ -1,15 +1,16 @@
 
 import os
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 from functools import partial
 import argparse
 import logging
 
-from ..utils.compactmodel_io import get_model_classifier_name
-from ..utils.classification_exceptions import AlgorithmNotExistException, WordEmbeddingModelNotExistException
-from ..utils import load_word2vec_model, load_fasttext_model, load_poincare_model
-from ..smartload import smartload_compact_model
-from ..classifiers import TopicVectorCosineDistanceClassifier
+from shorttext.utils.compactmodel_io import get_model_classifier_name
+from shorttext.utils.classification_exceptions import AlgorithmNotExistException, WordEmbeddingModelNotExistException
+from shorttext import load_word2vec_model, load_fasttext_model, load_poincare_model
+from shorttext.smartload import smartload_compact_model
+from shorttext.classifiers import TopicVectorCosineDistanceClassifier
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
