@@ -149,3 +149,7 @@ docker rm <CONTAINER_ID>
 ```
 docker rmi final_2023040036:v1
 ```
+
+## 📌LICENSE
+
+MIT © Viva Republica, Inc. See the LICENSE file (https://github.com/toss/es-hangul/blob/main/LICENSE) for details.
