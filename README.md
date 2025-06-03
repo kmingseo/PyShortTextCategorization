@@ -1,167 +1,157 @@
 # Short Text Mining in Python
 
-[![CircleCI](https://circleci.com/gh/stephenhky/PyShortTextCategorization.svg?style=svg)](https://circleci.com/gh/stephenhky/PyShortTextCategorization.svg)
-[![GitHub release](https://img.shields.io/github/release/stephenhky/PyShortTextCategorization.svg?maxAge=3600)](https://github.com/stephenhky/PyShortTextCategorization/releases)
-[![Documentation Status](https://readthedocs.org/projects/pyqentangle/badge/?version=latest)](https://pyqentangle.readthedocs.io/en/latest/?badge=latest)
-[![Updates](https://pyup.io/repos/github/stephenhky/PyShortTextCategorization/shield.svg)](https://pyup.io/repos/github/stephenhky/PyShortTextCategorization/)
-[![Python 3](https://pyup.io/repos/github/stephenhky/PyShortTextCategorization/python-3-shield.svg)](https://pyup.io/repos/github/stephenhky/PyShortTextCategorization/)
-[![pypi](https://img.shields.io/pypi/v/shorttext.svg?maxAge=3600)](https://pypi.org/project/shorttext/)
-[![download](https://img.shields.io/pypi/dm/shorttext.svg?maxAge=2592000&label=installs&color=%2327B1FF)](https://pypi.org/project/shorttext/)
-[![stars](https://img.shields.io/github/stars/stephenhky/PyShortTextCategorization.svg?style=social&label=Star&maxAge=60)](https://github.com/stephenhky/PyShortTextCategorization)
 
-## Introduction
+## 📌 Goal
 
-This package `shorttext` is a Python package that facilitates supervised and unsupervised
-learning for short text categorization. Due to the sparseness of words and
-the lack of information carried in the short texts themselves, an intermediate
-representation of the texts and documents are needed before they are put into
-any classification algorithm. In this package, it facilitates various types
-of these representations, including topic modeling and word-embedding algorithms.
+PyShortTextCategorization is a Python package that supports supervised and unsupervised short text classification. 
+It utilizes intermediate representation techniques such as topic modeling and word embeddings to address the sparsity and lack of information inherent in short texts.
 
-The package `shorttext` runs on Python 3.9, 3.10, 3.11, and 3.12.
-Characteristics:
+- Update Keras imports to tensorflow.keras to ensure compatibility and avoid conflicts in TensorFlow 2.x environments.
+- Replaced prints with logging for better log management.
+- Added choices in argparse to validate embedding types.
+- Improved argument descriptions and inpu-t validation.
+- Enhanced console input handling with whitespace stripping and clean exit.
+- Used f-strings for clearer output formatting.
+- Added if name == "main": guard for proper script execution.
 
-- example data provided (including subject keywords and NIH RePORT);
-- text preprocessing;
-- pre-trained word-embedding support;
-- `gensim` topic models (LDA, LSI, Random Projections) and autoencoder;
-- topic model representation supported for supervised learning using `scikit-learn`;
-- cosine distance classification;
-- neural network classification (including ConvNet, and C-LSTM);
-- maximum entropy classification;
-- metrics of phrases differences, including soft Jaccard score (using Damerau-Levenshtein distance), and Word Mover's distance (WMD);
-- character-level sequence-to-sequence (seq2seq) learning; 
-- spell correction; and
-- Sentence encodings and similarities based on BERT.
+<br/><br/>
 
-## Documentation
 
-Documentation and tutorials for `shorttext` can be found here: [http://shorttext.rtfd.io/](http://shorttext.rtfd.io/).
+## 📌 Requirements
 
-See [tutorial](http://shorttext.readthedocs.io/en/latest/tutorial.html) for how to use the package, and [FAQ](https://shorttext.readthedocs.io/en/latest/faq.html).
 
-## Installation
+- python==3.10
+- numpy==1.26.4 
+- scipy==1.13.1
+- joblib==1.5.1 
+- scikit-learn==1.6.1 
+- tensorflow-cpu==2.19.0 
+- keras==3.10.0 
+- gensim==4.3.3 
+- pandas==2.2.3 
+- snowballstemmer==3.0.1 
+- transformers==4.52.3 
+- torch==2.7.0 
+- numba==0.61.2 
+- shorttext==2.1.1
 
-To install it, in a console, use `pip`.
+<br/><br/>
 
+
+## 📌 How to Download and Install a Docker Image (Assuming Docker and Git are already installed)
+
+Download an image from Docker Hub 
 ```
->>> pip install shorttext
+docker pull [image_name]:[tag]
 ```
 
-or, if you want the most recent development version on Github, type
-
+Load an image from a tar file 
 ```
->>> pip install git+https://github.com/stephenhky/PyShortTextCategorization@master
+docker load -i <image_tar_file_name>.tar
 ```
 
-See [installation guide](https://shorttext.readthedocs.io/en/latest/install.html) for more details.
+Build an image using a Dockerfile (run in the folder containing the Dockerfile)
+```
+docker build -t <image_name>:<tag> .
+```
+
+<br/><br/>
 
 
-## Issues
+## 📌 How to create and run a Docker container
+(After entering the project root directory inside the container, run the following commands) 
 
-To report any issues, go to the [Issues](https://github.com/stephenhky/PyShortTextCategorization/issues) tab of the Github page and start a thread.
-It is welcome for developers to submit pull requests on their own
-to fix any errors.
+### 1. Run the test script
+```
+python test.py
+```
 
-## Contributors
+### Expected Output
+```
+{'fruit': 0.6626538015879517, 'animal': 0.5442677398027801, 'color': 0.5905815856817532}
 
-If you would like to contribute, feel free to submit the pull requests. You can talk to me in advance through e-mails or the
-[Issues](https://github.com/stephenhky/PyShortTextCategorization/issues) page.
+fruit
+```
 
-## Useful Links
+### 2. Run the CLI categorization tool
+```
+python -m shorttext.cli.categorization \
+  new_model.bin \
+  --wv glove.6B.100d.25k.word2vec.txt \
+  --type word2vec_nonbinary \
+  --inputtext "I like eating an apple"
+```
 
-* Documentation: [http://shorttext.readthedocs.io](http://shorttext.readthedocs.io/)
-* Github: [https://github.com/stephenhky/PyShortTextCategorization](https://github.com/stephenhky/PyShortTextCategorization)
-* PyPI: [https://pypi.org/project/shorttext/](https://pypi.org/project/shorttext/)
-* "Package shorttext 1.0.0 released," [Medium](https://medium.com/@stephenhky/package-shorttext-1-0-0-released-ca3cb24d0ff3)
-* "Python Package for Short Text Mining", [WordPress](https://datawarrior.wordpress.com/2016/12/22/python-package-for-short-text-mining/)
-* "Document-Term Matrix: Text Mining in R and Python," [WordPress](https://datawarrior.wordpress.com/2018/01/22/document-term-matrix-text-mining-in-r-and-python/)
-* An [earlier version](https://github.com/stephenhky/PyShortTextCategorization/tree/b298d3ce7d06a9b4e0f7d32f27bab66064ba7afa) of this repository is a demonstration of the following blog post: [Short Text Categorization using Deep Neural Networks and Word-Embedding Models](https://datawarrior.wordpress.com/2016/10/12/short-text-categorization-using-deep-neural-networks-and-word-embedding-models/)
+### Expected Output
+```
+fruit : 0.6627
+color : 0.5906
+animal : 0.5443
+```
+
+<br/><br/>
 
 
-## News
+## 📌 Project Directory Structure
+```
+PyShortTextCategorization/
+├── .circleci/                       # Continuous Integration configuration
+├── docs/                            
+├── shorttext/                       # Main Python package source code
+│   ├── classifiers/                 
+│   ├── cli/                         # Command-line interface modules
+│   │   ├── __init__.py
+│   │   ├── categorization.py        # CLI for text categorization
+│   │   ├── wordembedsim.py          
+│   ├── data/                        
+│   ├── generators/                  
+│   ├── metrics/                    
+│   ├── spell/                       
+│   ├── stack/                       
+│   ├── utils/                     
+│   ├── __init__.py
+│   └── smartload.py                
+├── test/                            # Unit tests
+├── .gitignore
+├── .readthedocs.yml                 
+├── LICENSE
+├── MANIFEST.in                      
+├── README.md                        # Project overview and usage instructions
+├── glove.6B.100d.25k.word2vec.txt   # Pre-trained word embedding for testing
+├── pyproject.toml                   
+└── test.py                          # Sample script for testing
+```
 
-* 06/02/2025: `shorttext` 2.2.1 released. (Acknowledgement:  [Minseo Kim](https://kmingseo.github.io/))
-* 05/29/2025: `shorttext` 2.2.0 released. (Acknowledgement:  [Minseo Kim](https://kmingseo.github.io/))
-* 05/08/2025: `shorttext` 2.1.1 released.
-* 12/14/2024: `shorttext` 2.1.0 released.
-* 07/12/2024: `shorttext` 2.0.0 released.
-* 12/21/2023: `shorttext` 1.6.1 released.
-* 08/26/2023: `shorttext` 1.6.0 released.
-* 06/19/2023: `shorttext` 1.5.9 released.
-* 09/23/2022: `shorttext` 1.5.8 released.
-* 09/22/2022: `shorttext` 1.5.7 released.
-* 08/29/2022: `shorttext` 1.5.6 released.
-* 05/28/2022: `shorttext` 1.5.5 released.
-* 12/15/2021: `shorttext` 1.5.4 released.
-* 07/11/2021: `shorttext` 1.5.3 released.
-* 07/06/2021: `shorttext` 1.5.2 released.
-* 04/10/2021: `shorttext` 1.5.1 released.
-* 04/09/2021: `shorttext` 1.5.0 released.
-* 02/11/2021: `shorttext` 1.4.8 released.
-* 01/11/2021: `shorttext` 1.4.7 released.
-* 01/03/2021: `shorttext` 1.4.6 released.
-* 12/28/2020: `shorttext` 1.4.5 released.
-* 12/24/2020: `shorttext` 1.4.4 released.
-* 11/10/2020: `shorttext` 1.4.3 released.
-* 10/18/2020: `shorttext` 1.4.2 released.
-* 09/23/2020: `shorttext` 1.4.1 released.
-* 09/02/2020: `shorttext` 1.4.0 released.
-* 07/23/2020: `shorttext` 1.3.0 released.
-* 06/05/2020: `shorttext` 1.2.6 released.
-* 05/20/2020: `shorttext` 1.2.5 released.
-* 05/13/2020: `shorttext` 1.2.4 released.
-* 04/28/2020: `shorttext` 1.2.3 released.
-* 04/07/2020: `shorttext` 1.2.2 released.
-* 03/23/2020: `shorttext` 1.2.1 released.
-* 03/21/2020: `shorttext` 1.2.0 released.
-* 12/01/2019: `shorttext` 1.1.6 released.
-* 09/24/2019: `shorttext` 1.1.5 released.
-* 07/20/2019: `shorttext` 1.1.4 released.
-* 07/07/2019: `shorttext` 1.1.3 released.
-* 06/05/2019: `shorttext` 1.1.2 released.
-* 04/23/2019: `shorttext` 1.1.1 released.
-* 03/03/2019: `shorttext` 1.1.0 released.
-* 02/14/2019: `shorttext` 1.0.8 released.
-* 01/30/2019: `shorttext` 1.0.7 released.
-* 01/29/2019: `shorttext` 1.0.6 released.
-* 01/13/2019: `shorttext` 1.0.5 released.
-* 10/03/2018: `shorttext` 1.0.4 released.
-* 08/06/2018: `shorttext` 1.0.3 released.
-* 07/24/2018: `shorttext` 1.0.2 released.
-* 07/17/2018: `shorttext` 1.0.1 released.
-* 07/14/2018: `shorttext` 1.0.0 released.
-* 06/18/2018: `shorttext` 0.7.2 released.
-* 05/30/2018: `shorttext` 0.7.1 released.
-* 05/17/2018: `shorttext` 0.7.0 released.
-* 02/27/2018: `shorttext` 0.6.0 released.
-* 01/19/2018: `shorttext` 0.5.11 released.
-* 01/15/2018: `shorttext` 0.5.10 released.
-* 12/14/2017: `shorttext` 0.5.9 released.
-* 11/08/2017: `shorttext` 0.5.8 released.
-* 10/27/2017: `shorttext` 0.5.7 released.
-* 10/17/2017: `shorttext` 0.5.6 released.
-* 09/28/2017: `shorttext` 0.5.5 released.
-* 09/08/2017: `shorttext` 0.5.4 released.
-* 09/02/2017: end of GSoC project. ([Report](https://rare-technologies.com/chinmayas-gsoc-2017-summary-integration-with-sklearn-keras-and-implementing-fasttext/))
-* 08/22/2017: `shorttext` 0.5.1 released.
-* 07/28/2017: `shorttext` 0.4.1 released.
-* 07/26/2017: `shorttext` 0.4.0 released.
-* 06/16/2017: `shorttext` 0.3.8 released.
-* 06/12/2017: `shorttext` 0.3.7 released.
-* 06/02/2017: `shorttext` 0.3.6 released.
-* 05/30/2017: GSoC project ([Chinmaya Pancholi](https://rare-technologies.com/google-summer-of-code-2017-week-1-on-integrating-gensim-with-scikit-learn-and-keras/), with [gensim](https://radimrehurek.com/gensim/))
-* 05/16/2017: `shorttext` 0.3.5 released.
-* 04/27/2017: `shorttext` 0.3.4 released.
-* 04/19/2017: `shorttext` 0.3.3 released.
-* 03/28/2017: `shorttext` 0.3.2 released.
-* 03/14/2017: `shorttext` 0.3.1 released.
-* 02/23/2017: `shorttext` 0.2.1 released.
-* 12/21/2016: `shorttext` 0.2.0 released.
-* 11/25/2016: `shorttext` 0.1.2 released.
-* 11/21/2016: `shorttext` 0.1.1 released.
 
-# Acknowledgements
+<br/><br/>
 
-* [Chinmaya Pancholi](https://www.linkedin.com/in/cpancholi/)
-* [Minseo Kim](https://kmingseo.github.io/)
+
+## 📌 How to Stop and Clean Up
+
+### 1. To stop and exit
+```
+Ctrl + C
+or
+exit (typing)
+```
+
+### 2. Stop the container
+```
+docker stop <CONTAINER_ID>
+```
+
+### 3. Remove the container
+```
+docker rm <CONTAINER_ID>
+```
+
+### 4. Remove Docker image
+```
+docker rmi final_2023040036:v1
+```
+
+<br/><br/>
+
+## 📌LICENSE
+
+MIT © Viva Republica, Inc. See the LICENSE file (https://github.com/toss/es-hangul/blob/main/LICENSE) for details.
