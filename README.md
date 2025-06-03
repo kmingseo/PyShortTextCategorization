@@ -61,6 +61,10 @@ docker build -t <image_name>:<tag> .
 ## 📌 How to create and run a Docker container
 (After entering the project root directory inside the container, run the following commands) 
 
+### NOTE: 
+The file test.py is a sample script provided for demonstration purposes. <br/>
+It shows how to use the package for short text categorization with a pre-trained embedding file (glove.6B.100d.25k.word2vec.txt).
+
 ### 1. Run the test script
 ```
 python test.py
