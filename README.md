@@ -165,4 +165,4 @@ docker rmi <image_name>
 
 ## 📌LICENSE
 
-MIT © Viva Republica, Inc. See the LICENSE file (https://github.com/toss/es-hangul/blob/main/LICENSE) for details.
+MIT © Viva Republica, Inc. See the LICENSE file (https://github.com/stephenhky/PyShortTextCategorization/blob/master/LICENSE) for details.
