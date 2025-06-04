@@ -65,6 +65,13 @@ docker build -t <image_name>:<tag> .
 The file test.py is a sample script provided for demonstration purposes. <br/>
 It shows how to use the package for short text categorization with a pre-trained embedding file (glove.6B.100d.25k.word2vec.txt).
 
+In the test.py script, 
+if you want to train the classifier with different sentences, <br/> 
+simply modify the example words in each category within the data dictionary or the input sentence. <br/>
+You can also add more categories. 
+
+To test the classifier with different sentences using the CLI, simply modify the value of the --inputtext option in the command.
+
 ### 1. Run the test script
 ```
 python test.py
