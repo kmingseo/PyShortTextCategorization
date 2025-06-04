@@ -158,7 +158,7 @@ docker rm <CONTAINER_ID>
 
 ### 4. Remove Docker image
 ```
-docker rmi final_2023040036:v1
+docker rmi final_2023040014:v1
 ```
 
 <br/><br/>
