@@ -42,7 +42,7 @@ It utilizes intermediate representation techniques such as topic modeling and wo
 
 Download an image from Docker Hub 
 ```
-docker pull [image_name]:[tag]
+docker pull <image_name>:<tag>
 ```
 
 Load an image from a tar file 
@@ -158,7 +158,7 @@ docker rm <CONTAINER_ID>
 
 ### 4. Remove Docker image
 ```
-docker rmi final_2023040014:v1
+docker rmi <image_name>
 ```
 
 <br/><br/>
