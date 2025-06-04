@@ -141,7 +141,7 @@ PyShortTextCategorization/
 
 ### 1. To stop and exit
 ```
-Ctrl + C
+Ctrl + D
 or
 exit (typing)
 ```
