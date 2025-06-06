@@ -38,27 +38,41 @@ It utilizes intermediate representation techniques such as topic modeling and wo
 <br/><br/>
 
 
-## 📌 How to Download and Install a Docker Image (Assuming Docker and Git are already installed)
+## 📌 How to install & run
 
-Download an image from Docker Hub 
-```
-docker pull <image_name>:<tag>
-```
+### Download an image from a tar file
 
 Load an image from a tar file 
 ```
-docker load -i <image_tar_file_name>.tar
+docker load -i final_2023040014:v1.tar
 ```
 
-Build an image using a Dockerfile (run in the folder containing the Dockerfile)
+Check loaded imagee
 ```
-docker build -t <image_name>:<tag> .
+docker images
+```
+
+### Create and run a Docker container
+
+Run the container
+```
+docker run -dit final_2023040014:v1
+```
+
+Find container
+```
+docker ps
+```
+
+Access the container
+```
+docker exec -it <CONTAINER_ID> /bin/bash
 ```
 
 <br/><br/>
 
 
-## 📌 How to create and run a Docker container
+## 📌 How to run
 (After entering the project root directory inside the container, run the following commands) 
 
 ### NOTE: 
