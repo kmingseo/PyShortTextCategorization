@@ -40,14 +40,14 @@ It utilizes intermediate representation techniques such as topic modeling and wo
 
 ## 📌 How to install & run
 
-### Download an image from a tar file
+### Download and install the docker image
 
 Load an image from a tar file 
 ```
 docker load -i final_2023040014:v1.tar
 ```
 
-Check loaded imagee
+Check loaded image
 ```
 docker images
 ```
